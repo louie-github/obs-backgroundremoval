@@ -133,37 +133,50 @@ $ cd obs-backgroundremoval
 ```
 
 #### Install Prerequisites
-
-Install OpenCV via `vcpkg`:
+Set up the build folder:
 ```
 $ mkdir build
 $ cd build
+```
+
+Install OpenCV via `vcpkg`:
+```
 $ git clone https://github.com/microsoft/vcpkg
 $ cd vcpkg
 $ .\bootstrap-vcpkg.bat
 $ .\vcpkg.exe install opencv[core]:x64-windows-static
+$ cd ..
 ```
 
-Install Onnxruntime with NuGet:
+Install ONNXRuntime with NuGet:
 ```
-$ cd build
 $ mkdir nuget
 $ Invoke-WebRequest https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -UseBasicParsing -OutFile nuget.exe
 $ nuget.exe install Microsoft.ML.OnnxRuntime.DirectML -Version 1.7.0
 $ nuget.exe install Microsoft.ML.OnnxRuntime.Gpu -Version 1.7.1
+$ cd ..
 ```
 
-Clone the OBS repo, `Downloads\ $ git clone --single-branch -b 27.0.1 git@github.com:obsproject/obs-studio.git`, to e.g. Downloads.
+Clone the OBS repo to a folder, e.g. your Downloads folder:
+`Downloads\ $ git clone --single-branch -b 27.0.1 git@github.com:obsproject/obs-studio.git`
 
 #### Build and install the plugin
+Replace the argument of `-DobsPath` with the path to the OBS repo.
 ```
 $ cmake .. -DobsPath="$HOME\Downloads\obs-studio\"
 $ cmake --build . --config Release
 $ cpack
-$ Expand-Archive .\obs-backgroundremoval-win64.zip -DestinationPath 'C:\Program Files\obs-studio\' -Force
 ```
 
-To build with CUDA support, tell cmake to use the CUDA version of OnnxRuntime
+Install the plugin to your OBS program folder (change it if necessary):
+```
+$ Expand-Archive .\obs-backgroundremoval-win64.zip -DestinationPath 'C:\Program Files\obs-studio\' -Force
+```
+You can also do this manually if you wish.
+
+
+To build with CUDA support, tell `cmake` to use the CUDA version of
+ONNXRuntime:
 ```
 $ cmake .. -DobsPath="$HOME\Downloads\obs-studio\" -DWITH_CUDA=ON
 ```
