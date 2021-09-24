@@ -35,6 +35,12 @@ The plugin was built and tested on Mac OSX, Windows and Ubuntu Linux. Help is ap
 
 ### Mac OSX
 
+First, clone the repository:
+```
+$ git clone https://github.com/royshil/obs-backgroundremoval.git obs-backgroundremoval
+$ cd obs-backgroundremoval
+```
+
 #### Install dependencies
 
 You may use homebrew:
@@ -79,13 +85,20 @@ The first is recommended as it preserves the plugins over the parallel installat
 ### Linux
 
 #### Ubuntu
+First, clone the repository:
+```
+$ git clone https://github.com/royshil/obs-backgroundremoval.git obs-backgroundremoval
+$ cd obs-backgroundremoval
+```
+
+Next, install the prerequisites:
 ```
 $ apt install -y libobs-dev libopencv-dev language-pack-en wget git build-essential cmake
 $ wget https://github.com/microsoft/onnxruntime/releases/download/v1.7.0/onnxruntime-linux-x64-1.7.0.tgz
 $ tar xzvf onnxruntime-linux-x64-1.7.0.tgz --strip-components=1 -C /usr/local/ --wildcards "*/include/*" "*/lib*/"
 ```
 
-Then build and install:
+Then, build and install:
 ```
 $ mkdir build && cd build
 $ cmake .. && cmake --build . && cmake --install .
@@ -113,7 +126,14 @@ $ docker run -it -v $(pwd):/src archlinux:latest /bin/bash
 
 We will use static linking (as much as possible) to aviod having to lug around .DLLs with the plugin.
 
+First, clone the repository:
+```
+$ git clone https://github.com/royshil/obs-backgroundremoval.git obs-backgroundremoval
+$ cd obs-backgroundremoval
+```
+
 #### Install Prerequisites
+
 Install OpenCV via `vcpkg`:
 ```
 $ mkdir build
