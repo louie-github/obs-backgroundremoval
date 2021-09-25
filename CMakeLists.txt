@@ -63,7 +63,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_SOURCE_DIR}/external")
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if (APPLE)
+if (WIN32 OR APPLE)
     include(external/FindLibObs.cmake)
 else()
     find_package(LibObs REQUIRED)
