@@ -151,6 +151,7 @@ $ cd ..
 Install ONNXRuntime with NuGet:
 ```
 $ mkdir nuget
+$ cd nuget
 $ Invoke-WebRequest https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -UseBasicParsing -OutFile nuget.exe
 $ nuget.exe install Microsoft.ML.OnnxRuntime.DirectML -Version 1.7.0
 $ nuget.exe install Microsoft.ML.OnnxRuntime.Gpu -Version 1.7.1
